@@ -1,0 +1,56 @@
+@charset "UTF-8";
+/*
+지정할때 사용하는 단위
+px, pt, dp, em, rem 등등..
+
+rem(em) :
+    box내부에 문자열 있을때
+        문자열중에 가장 큰 문자열을 기준으로
+        배율을 정하라
+*/
+header {
+	background-color: green;
+	color: white;
+	padding: 1.5rem;
+	text-align: center;
+}
+
+nav {
+	background-color: blue;
+}
+
+div {
+	background-color: blue;
+}
+
+ul {
+	margin: 0;
+}
+
+li {
+	display: inline-block;
+	padding: 5px;
+	background-color: blue;
+	color: white;
+	cursor: pointer;
+}
+
+li:hover {
+	background-color: teal;
+	color: white;
+}
+
+/*
+text-de : 는 특성상 문자열에 밑
+*/
+a {
+	color: white;
+	text-decoration: none;
+}
+
+footer {
+	background-color: black;
+	text-align: center;
+	padding: 1.1rem;
+	color: white;
+}	
