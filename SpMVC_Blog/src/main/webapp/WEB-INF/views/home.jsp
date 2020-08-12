@@ -15,15 +15,20 @@
 	</header>
 	<section id="main">
 		<article id="button">
-			<button><a href="input" >블로그 작성</a></button>
+			<button>
+				<a href="input">블로그 작성</a>
+			</button>
 		</article>
-		
+
 		<article id="blog_body">
 			<section class="blog_title">
-				<h4>${TITLE}</h4>
+				<h4>오늘은 블로그 시작하는 날</h4>
 			</section>
 			<section class="blog_text">
-				<P>${CONTENT}</P>
+				<P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
+					ea quas possimus! Culpa earum voluptatibus excepturi numquam labore
+					reiciendis aperiam, doloribus aliquam quibusdam iure, cum fuga
+					neque, repudiandae laudantium cupiditate!</P>
 			</section>
 		</article>
 	</section>
