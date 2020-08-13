@@ -24,6 +24,7 @@ public class BlogController {
 	public String list(Model model) {
 		
 		List<BlogVO> blogList = bService.selectAll();
+		System.out.println(blogList.get(0).getTitle());
 		model.addAttribute("BLOGS", blogList);
 		
 		return "list";
@@ -44,7 +45,7 @@ public class BlogController {
 			model.addAttribute("TITLE","데이터가 없음");
 		}
 		
-		return "list";
+		return "view";
 	
 	}
 	@RequestMapping(value="/input",method=RequestMethod.GET)
@@ -72,7 +73,6 @@ public class BlogController {
 		model.addAttribute("CONTENT",blogVO.getContent());
 		model.addAttribute("USER",blogVO.getUser());
 		return "redirect:/blog/list";
-	
 	}
 	
 }

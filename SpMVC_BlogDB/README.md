@@ -5,3 +5,5 @@
 * spring-jdbc
 * mybatis
 * mybatis-spring
+* ojdbc
+* commons-dbcp2
