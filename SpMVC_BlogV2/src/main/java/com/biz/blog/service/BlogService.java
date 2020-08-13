@@ -1,6 +1,7 @@
 package com.biz.blog.service;
 
 import java.awt.print.Printable;
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -43,6 +44,7 @@ public class BlogService {
 		// server 의 class 들이 저장되는 폴드 정보가져오기
 		ClassPathResource rs = new ClassPathResource(blogFile);
 		Path path = null;
+		
 		FileWriter fileWriter = null;
 		PrintWriter print = null;
 		
