@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.biz.blog.model.BlogVO;
 import com.biz.blog.service.BlogService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RequestMapping(value="/blog")
 @Controller
 public class BlogController {
@@ -36,9 +39,9 @@ public class BlogController {
 		List<BlogVO> blogList = bService.selectAll();
 		if(blogList != null) {
 			int size = blogList.size();
-			model.addAttribute("TITLE",blogList.get(size - 1).getTitle());
-			model.addAttribute("CONTENT",blogList.get(size - 1).getContent());
-			model.addAttribute("USER",blogList.get(size - 1).getUser());
+			model.addAttribute("TITLE",blogList.get(size - 1).getBl_title());
+			model.addAttribute("CONTENT",blogList.get(size - 1).getBl_contents());
+			model.addAttribute("USER",blogList.get(size - 1).getBl_user());
 			
 		} else {
 			model.addAttribute("TITLE","데이터가 없음");
@@ -62,15 +65,21 @@ public class BlogController {
 	@RequestMapping(value="/writer",method=RequestMethod.POST)
 	public String write(@ModelAttribute BlogVO blogVO,Model model) {
 		
-		System.out.println("USER : " + blogVO.getUser());
-		System.out.println("TITLE : " + blogVO.getTitle());
-		System.out.println("CONTENT : " + blogVO.getContent());
-	
+		/*
+		 * debuging code :
+		 */
+		log.debug("USER : " + blogVO.getBl_user());
+		log.debug("TITLE : " + blogVO.getBl_title());
+		log.debug("CONTENT : " + blogVO.getBl_contents());
+		log.debug("로그인한 사용자는?" + "홍길동");
+		log.debug("로그인한 비밀번호는?" + "12345");
+	/*
 		bService.insert(blogVO);
 		
 		model.addAttribute("TITLE",blogVO.getTitle());
 		model.addAttribute("CONTENT",blogVO.getContent());
 		model.addAttribute("USER",blogVO.getUser());
+		*/
 		return "redirect:/blog/list";
 	
 	}
