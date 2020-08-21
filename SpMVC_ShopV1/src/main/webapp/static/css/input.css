@@ -1,24 +1,5 @@
 @charset "UTF-8";
 
-section{
-	display: flex;
-}
-
-section article {
-	width: 200px;
-	margin:20px auto;
-	height: 100px;
-}
-
-
-section article div:first-child {
-	width: 100%;
-	padding: 16px;
-	text-align: center;
-	color: white;
-	background-color: blue;
-}
-
 form fieldset {
 	width: 80%;
 	margin: 10px auto;
@@ -37,7 +18,7 @@ label {
 	text-align: right;
 	margin: 4px;
 	padding: 8px;
-	color: blue;
+	color: rgb(100, 78, 228);
 	font-weight: bold;
 }
 

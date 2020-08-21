@@ -3,11 +3,31 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
- <mapper namespace="com.biz.dbms.dao.BBsDao">
+ <mapper namespace="com.biz.shop.persistence.ProductDao">
  
- 	<select id="selectAll"></select>
+ 	<select id="selectAll" resultType="proVO">
+ 	SELECT * FROM tbl_product
+ 	</select>
  	<select id="findById"></select>
- 	<insert id="insert"></insert>
+ 	<insert id="insert">
+ 	insert into tbl_product(
+	 	p_code,
+		p_name,
+		p_dcode,
+		p_std,
+		p_iprice,
+		p_oprice,
+		p_image
+ 	) values (
+	 	#{p_code},
+		#{p_name},
+		#{p_dcode},
+		#{p_std},
+		#{p_iprice},
+		#{p_oprice},
+		#{p_image}
+ 	)
+ 	</insert>
  	<update id="update"></update>
  	<delete id="delete"></delete>
  
