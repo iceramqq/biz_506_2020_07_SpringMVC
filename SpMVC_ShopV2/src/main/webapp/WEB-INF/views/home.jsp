@@ -34,7 +34,7 @@ header {
 	<section>
 		<c:choose>
 			<c:when test="${BODY == 'PRO_WRITE' }">
-				<%@ include file="/WEB-INF/views/conponent/product/Product_write.jspf" %>			
+				<%@ include file="/WEB-INF/views/conponent/product/Product_writeV2.jspf" %>			
 			</c:when>
 			<c:when test="${BODY == 'PRO_HOME' }">
 				<%@ include file="/WEB-INF/views/conponent/product/Product_list.jspf" %>			
@@ -42,11 +42,14 @@ header {
 			<c:when test="${BODY == 'PRO_DETAIL' }">
 				<%@ include file="/WEB-INF/views/conponent/product/Product_detail.jspf" %>			
 			</c:when>
-			<c:when test="${BODY == 'DEPT_WRITE' }">
-				<%@ include file="/WEB-INF/views/conponent/dept/dept_write.jspf" %>			
-			</c:when>
-			<c:when test="${BODY == 'DEPT_HOME' }">
+			<c:when test="${BODY == 'DEPT_LIST' }">
 				<%@ include file="/WEB-INF/views/conponent/dept/dept_list.jspf" %>
+			</c:when>
+			<c:when test="${BODY == 'DEPT_WRITE' }">
+				<%@ include file="/WEB-INF/views/conponent/dept/dept_write.jspf" %>
+			</c:when>
+			<c:when test="${BODY == 'DEPT_DETAIL' }">
+				<%@ include file="/WEB-INF/views/conponent/dept/dept_detail.jspf" %>
 			</c:when>
 			<c:otherwise>
 				<%@ include file="/WEB-INF/views/include/include-main.jspf" %>		

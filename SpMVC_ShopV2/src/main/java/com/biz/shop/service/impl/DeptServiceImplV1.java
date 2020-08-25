@@ -9,20 +9,16 @@ import com.biz.shop.model.DeptVO;
 import com.biz.shop.persistence.DeptDao;
 import com.biz.shop.service.DeptService;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
-@Service(value = "dServiceV1")
+@Service(value = "deptServiceV1")
 public class DeptServiceImplV1 implements DeptService {
 	
 	@Autowired
-	private DeptDao dDao;
-	
+	private DeptDao deptDao;
 	
 	@Override
 	public List<DeptVO> selectAll() {
-		// TODO Auto-generated method stub
-		return dDao.selectAll();
+		
+		return deptDao.selectAll();
 	}
 
 	@Override
@@ -33,9 +29,10 @@ public class DeptServiceImplV1 implements DeptService {
 
 	@Override
 	public int insert(DeptVO vo) {
-		// TODO Auto-generated method stub
-		int ret = dDao.insert(vo);
-		return 0;
+		
+		int ret = deptDao.insert(vo);
+		
+		return ret;
 	}
 
 	@Override
@@ -48,6 +45,14 @@ public class DeptServiceImplV1 implements DeptService {
 	public int delete(String id) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public String getDCode() {
+		// TODO Auto-generated method stub
+		
+		
+		return null;
 	}
 
 }

@@ -65,9 +65,15 @@ article a:hover {
 			function() {
 				const p_code = $(this).children().eq(0).text()
 				//alert(p_code)
-				const p_code1 = $(this).data("pcode")
+				//const p_code1 = $(this).data("pcode")
 				//alert(p_code1)
-				document.location.href = "${rootPath}/product/deteil?p_code=" + p_code
+				
+				//
+				//
+				//= `${rootPath}/product/detail?id=${p_code}` // ?id=P00001
+				// 하지만 jsp에서는 EL tag 와 문법충돌로 인하여 사용이 불가능하다
+				document.location.href 
+					= "${rootPath}/product/detail?id=" + p_code // ?id=P00001
 
 		})
 	})

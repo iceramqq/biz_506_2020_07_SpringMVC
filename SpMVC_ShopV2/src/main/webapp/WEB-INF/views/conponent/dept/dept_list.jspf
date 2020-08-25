@@ -18,23 +18,21 @@ th, td {
 /* an+b 형식의 연산식을 사용한다. */
 /*  */
 /* th와 td 값에 4번재 */
-th:nth-child(n+4),
-td:nth-child(n+4) {
+th:nth-child(n+4), td:nth-child(n+4) {
 	text-align: right;
 }
 
-tbody tr:nth-child(odd){
-background-color: #f1f1f1;
+tbody tr:nth-child(odd) {
+	background-color: #f1f1f1;
 }
 
-tbody tr:nth-child(even){
-background-color: #fff;
+tbody tr:nth-child(even) {
+	background-color: #fff;
 }
 
-
-tbody tr:hover{
-background-color: #ddd;
-cursor: pointer;
+tbody tr:hover {
+	background-color: #ddd;
+	cursor: pointer;
 }
 
 article {
@@ -59,18 +57,26 @@ article a:hover {
 	-webkit-box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.75);
 	-moz-box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.75);
 	box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.75);
-	
 }
 </style>
+<script>
+	$(function() {
+		$(".dept_item").click(
+			function() {
+				const p_code = $(this).children().eq(0).text()
+				document.location.href 
+					= "${rootPath}/dept/detail?id=" + d_code
 
+		})
+	})
+</script>
 <table>
 	<thead>
 		<tr>
-			<th>거래처코드</th>
+			<th>코드</th>
 			<th>거래처명</th>
 			<th>대표자명</th>
-			<th>전화번호</th>
-			<th>주소</th>
+			<th>대표전화</th>
 			<th>담당자</th>
 			<th>담당자연락처</th>
 		</tr>
@@ -82,5 +88,5 @@ article a:hover {
 	</tbody>
 </table>
 <article>
-	<a href="${rootPath}/product/insert">추가</a>
+	<a href="${rootPath}/dept/insert">거래처추가</a>
 </article>
