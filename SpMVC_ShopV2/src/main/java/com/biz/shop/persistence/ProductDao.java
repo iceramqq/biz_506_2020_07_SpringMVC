@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.biz.shop.model.ProductVO;
 
-public interface ProductDao extends GeneriDao<ProductVO, String> {
+public interface ProductDao extends GenericDao<ProductVO, String> {
 	
 	/*
 	 * 이산에서

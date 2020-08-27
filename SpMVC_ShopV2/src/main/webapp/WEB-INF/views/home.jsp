@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -19,28 +18,37 @@
 }
 header {
 	background-color: green;
-	color:white;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	color: white;
 	text-align: center;
-	padding:1.5rem;
+	padding: 2rem;
+}
+header h2 {
+	margin: 16px;
+	text-shadow: 3px 3px 3px rgba(0,0,0,0.2);
 }
 </style>
+
 </head>
 <body>
 	<header>
-		<h3>빛나리 쇼핑몰 V1</h3>
+		<h2>빛나리 쇼핑몰 V1</h2>
 		<p>빛나리 쇼핑몰 2020 V1</p>
 	</header>
-	<%@ include file="/WEB-INF/views/include/include-nav.japf" %>
+	<%@ include file="/WEB-INF/views/include/include-nav.japf"%>
 	<section>
 		<c:choose>
 			<c:when test="${BODY == 'PRO_WRITE' }">
-				<%@ include file="/WEB-INF/views/conponent/product/Product_writeV2.jspf" %>			
+				<%@ include file="/WEB-INF/views/conponent/product/Product_writeV2.jspf"%>
 			</c:when>
-			<c:when test="${BODY == 'PRO_HOME' }">
-				<%@ include file="/WEB-INF/views/conponent/product/Product_list.jspf" %>			
+			<c:when test="${BODY == 'PRO_HOME'}">
+				<%@ include file="/WEB-INF/views/conponent/product/Product_list.jspf"%>
 			</c:when>
-			<c:when test="${BODY == 'PRO_DETAIL' }">
-				<%@ include file="/WEB-INF/views/conponent/product/Product_detail.jspf" %>			
+			<c:when test="${BODY == 'PRO_DETAIL'}">
+				<%@ include file="/WEB-INF/views/conponent/product/Product_detail.jspf"%>
 			</c:when>
 			<c:when test="${BODY == 'DEPT_LIST' }">
 				<%@ include file="/WEB-INF/views/conponent/dept/dept_list.jspf" %>
@@ -52,7 +60,7 @@ header {
 				<%@ include file="/WEB-INF/views/conponent/dept/dept_detail.jspf" %>
 			</c:when>
 			<c:otherwise>
-				<%@ include file="/WEB-INF/views/include/include-main.jspf" %>		
+				<%@ include file="/WEB-INF/views/include/include-main.jspf"%>
 			</c:otherwise>
 		</c:choose>
 	</section>
