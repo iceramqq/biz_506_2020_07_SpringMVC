@@ -13,7 +13,42 @@
  		select * from tbl_books where seq = #{seq}
  	</select>
  	
- 	<insert id="insert"></insert>
+ 	<insert id="insert">
+ 		insert into tbl_books (
+		 	seq,
+			title,
+			link,
+			image,
+			author,
+			price,
+			discount,
+			publisher,
+			isbn,
+			description,
+			pubdate,
+			buydate,
+			buyprice,
+			buystore
+			
+ 			) values (
+ 			
+		 	SEQ_BOOKS.NEXTVAL,
+			#{title},
+			#{link},
+			#{image},
+			#{author},
+			#{price},
+			#{discount},
+			#{publisher},
+			#{isbn},
+			#{description},
+			#{pubdate},
+			#{buydate},
+			#{buyprice},
+			#{buystore}
+			)
+ 	</insert>
+ 	
  	<update id="update"></update>
  	<delete id="delete"></delete>
  
