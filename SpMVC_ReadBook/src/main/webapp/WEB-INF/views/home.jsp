@@ -15,7 +15,7 @@
     	// rootPath 변수를 전역으로 선언해 둔다
     	var rootPath = "${rootPath}"
     </script>
-    <script src="${rootPath}/static/js/main-nav.js"></script>
+    <script src="${rootPath}/static/js/main-nav.js?ver=2020-09-25-2"></script>
   </head>
   <body>
     <header>
@@ -24,14 +24,14 @@
     </header>
     <nav id="main-nav">
       <ul>
-        <li>home</li>
-        <li>도서정보</li>
-        <li>독서록</li>
+        <li id="menu_home">Read Book</li>
+        <li id="menu_books">도서정보</li>
+        <li id="menu_read-book">독서록</li>
         <li>네이버 검색</li>
-        <li>회원가입</li>
-        <li>로그인</li>
-        <li>마이페이지</li>
-        <li>로그아웃</li>
+        <li id="menu_join">회원가입</li>
+        <li id="menu_login">로그인</li>
+        <li id="menu_mypage">마이페이지</li>
+        <li id="menu_logout">로그아웃</li>
       </ul>
     </nav>
     <section id="main-section">
@@ -45,6 +45,9 @@
 		    <c:when test="${BODY == 'BOOK-DETAIL'}">
 		    	<%@ include file="/WEB-INF/views/books/book-detail.jsp" %>
 		    </c:when>
+		    <c:otherwise>
+		    	<%@ include file="/WEB-INF/views/main-body.jsp" %>
+		    </c:otherwise>
 	    </c:choose>
     </section>
     <footer>
