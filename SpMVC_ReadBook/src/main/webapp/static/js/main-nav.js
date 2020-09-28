@@ -23,12 +23,14 @@ $(function () {
 
     if (menu_text === "도서정보") {
       document.location.href = `${rootPath}/books`;
-    } else if (menu_id === "menu_home") {
+    } else if (menu_id === "menu-home") {
       document.location.href = `${rootPath}/`;
-    } else if (menu_id === "menu_read-book") {
+    } else if (menu_id === "menu-read-book") {
       document.location.href = `${rootPath}/read/`;
-    } else if (menu_id === "menu_join") {
+    } else if (menu_id === "menu-join") {
       document.location.href = `${rootPath}/member/join`;
+    } else if (menu_id === "menu-logout") {
+      document.location.href = `${rootPath}/member/logout`;
     }
   });
 });

@@ -1,7 +1,5 @@
 package com.biz.book.model;
 
-import org.apache.ibatis.type.Alias;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,15 +9,16 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Builder
-@Alias("Authority")
-public class AuthorityVO {
+public class ReadBookVO {
 
-	private long seq;
-	private String m_userid;
-	private String m_role;
-
+	private String r_date;
+	private String r_stime;
+	private String r_etime;
+	private String r_comment;
+	
+	private int r_read_time;
 }

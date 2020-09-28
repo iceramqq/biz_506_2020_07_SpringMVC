@@ -52,6 +52,12 @@
 		padding:10px;
 	}
 
+	section#read-book-body {
+		text-align: center;
+		width: 60%;
+		border: 1px solid green;
+		margin: 5px auto;
+	}
 </style>
 <table id="book-detail">
 	<tr class="title"><td colspan="2"><h3>${BOOKVO.title}</h3></td></tr>
@@ -87,3 +93,6 @@
 		</th>
 	</tr>
 </table>
+<section id="read-book-body">
+	<%@ include file="/WEB-INF/views/read-book/read-book-write.jsp" %>
+</section>

@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service("naverServiceV2_xml")
-public class NaverServiceImplV2_xml extends NaverServiceImplV1 {
+public class NaverServiceImplV2_XML extends NaverServiceImplV1 {
 	
 	public String queryURL(String category, String bookName) {
 		
