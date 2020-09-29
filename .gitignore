@@ -14,6 +14,7 @@ hs_err_pid*
 .metadata
 bin/
 tmp/
+Servers/
 *.tmp
 *.bak
 *.swp
