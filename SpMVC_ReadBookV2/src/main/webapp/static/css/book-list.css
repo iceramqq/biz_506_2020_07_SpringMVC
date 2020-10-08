@@ -4,7 +4,7 @@ table#book-list {
   border-spacing: 0;
   width: 90%;
   border: 1px solid #aaa;
-  margin: 10px auto;
+  margin: 30px auto;
 }
 
 table#book-list th,
@@ -22,14 +22,13 @@ table#book-list td {
 table#book-list tr:nth-child(even) {
   background-color: #f1f1f1;
 }
-
 table#book-list tr:nth-child(odd) {
   background-color: #fff;
 }
 
-/*
-An+2 공식으로 계산되는 결과에 따라 선택된다
-어떤 같은 tag가 연속적으로 나올때 tag 의 개수만큼 n : 0 ~ 개수 -1 증가 속성
+/* 
+An+2 공식으로 계산되는 결과에 따라 선택된다 
+어떤 같은 tag가 연속적으로 나올때 tag의 개수만큼 n : 0 ~ 개수 -1 증가 속성
 3n+2 : (0, 3, 6, 8...) + 2
 */
 table#book-list tr:nth-child(n + 2):hover {
@@ -53,5 +52,5 @@ div#book-link-box a {
 }
 
 div#book-link-box a:hover {
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 }

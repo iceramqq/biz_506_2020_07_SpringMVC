@@ -11,15 +11,15 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
+@ToString
 @Alias("Authority")
 public class AuthorityVO {
 
 	private long seq;
-	private String m_userid;
-	private String m_role;
-
+	private String username;
+	private String authority;
+	
 }

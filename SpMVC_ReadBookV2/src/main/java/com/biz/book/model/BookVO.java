@@ -1,7 +1,5 @@
 package com.biz.book.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +13,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@XmlRootElement(name="channel")
 public class BookVO {
 	
 	private long seq;

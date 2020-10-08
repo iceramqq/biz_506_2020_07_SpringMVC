@@ -9,10 +9,10 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@AllArgsConstructor
 @Builder
+@ToString
 public class ReadBookVO {
 
 	private String r_date;
@@ -21,4 +21,5 @@ public class ReadBookVO {
 	private String r_comment;
 	
 	private int r_read_time;
+	
 }

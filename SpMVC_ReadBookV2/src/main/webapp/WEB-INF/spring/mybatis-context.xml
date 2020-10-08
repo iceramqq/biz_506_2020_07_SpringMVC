@@ -53,12 +53,11 @@
 	</bean>
 
 	<!-- sqlSessionTemplate -->
-	
-	 <bean id="transactionManager" 
+	<!-- tx:annotaion-driven 을 사용한 transactional을 사용할 경우 SqlSessionTemplate은 필요치 않다 -->
+	<bean id="transactionManager" 
 	 	class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 	 	<property name="dataSource" ref="ds"/>
-	 </bean>
-	 
+	</bean>
 	 <mybatis-spring:scan base-package="com.biz.book.mapper"/>
 
 

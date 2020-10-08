@@ -16,19 +16,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.biz.book.config.NaverSecret;
-import com.biz.book.model.Book_JSON_Parent;
-import com.biz.book.model.Book_XML_Parent;
 import com.biz.book.model.BookVO;
+import com.biz.book.model.Book_XML_Parent;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Service("naverServiceV2_xml")
+@Service("naverServiceV2_XML")
 public class NaverServiceImplV2_XML extends NaverServiceImplV1 {
 	
 	public String queryURL(String category, String bookName) {
-		
-		log.debug(category);
+
 		String queryURL = NaverSecret.NAVER_BOOK_XML;
 		String encodeText = null;
 		try {
@@ -45,29 +43,38 @@ public class NaverServiceImplV2_XML extends NaverServiceImplV1 {
 		queryURL += "&display=10"; 
 		return queryURL;
 	}
+
 	
 	
+	// NaverServiceV1의 3개의 method를 모두 상속받아서
+	// 여기에 아무런 코드가 없어도 프로젝트가 정상 수행이 되고 있다.
 	
-	//
-	//
-	
-	// 3개의 method중에서 getNaverList(jsonString) method만 upgrade하겠다
+	// 3의 method 중에서 getNaverList(jsonString) method만 upgrade하겠다
 	@Override
 	public List<BookVO> getNaverList(String queryURL) {
 		
-		// queryurl 문자열을 uri 객체로 만들어
-		// http프로토콜에서 사용할 수 있도록 만드는 클래스
-		// 기존에 url 클래스가 있으나, 새로운 기능을 수행하기 위해서
-		// 별도의 uri 클래스를 만들어 놨으며
+		// queryURL(요청주소포함된) 문자열을 URI 객체로 만들어
+		// http 프로토콜에서 사용할 수 있도록 만드는 클래스
+		// 기존에 URL 클래스가 있으나, 새로운 기능을 수행하기 위해서
+		// 별도로 URI 클래스를 만들어 놨으며
 		// 많은 기능들이 추가되어 있다.
-		// restTamplate를 사용하기 위해서는
-		// queryUrl 문자열을 url 객체가 아닌 uri 객체오 만들어야 한다.
+		// RestTamplate를 사용하기 위해서는 
+		// queryURL 문자열을 URL 객체가 아닌 URI 객체로 만들어야 한다.
 		URI restURI = null;
 		
 		/*
-		 * springframewok에서 외부 api를 사용하여 데이터를 가져올 때
-		 * 기존에는 json 형식으로 가져올일이 점점 많아 지면서
+		 * springframework에서 외부 API를 사용하여 데이터를 가져올때
+		 * 기존에는 JSON(XML) 형식으로 가저오고, 
+		 * 여러가지 외부 라이브러리를 사용하여 객체로 parsing하는 과정을
+		 * 복잡하게 만들어야 했다.
 		 * 
+		 * spring에서 외부 API를 사용하여 데이터를 가져올일이 점점 많아 지면서
+		 * RestTempate라는 클래스를 새로 만들어
+		 * framework 프로젝트에서 사용할수 있도록 만들어 두었다.
+		 * 
+		 * HttpHeader, HttpEntity, ResponseEntity 객체만 잘 작성하면
+		 * 외부 API에 요청하고, 응답받은 데이터를 parsing 하는 절차를
+		 * 대신 수행 해준다.
 		 */
 		RestTemplate restTemp = new RestTemplate();
 		
@@ -77,18 +84,25 @@ public class NaverServiceImplV2_XML extends NaverServiceImplV1 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		HttpHeaders headers = new HttpHeaders();
-		headers.set("x-Naver-Client-Id",NaverSecret.NAVER_CLIENT_ID);
-		headers.set("x-Naver-Client-Secret",NaverSecret.NAVER_CLIENT_SECRET);
-		headers.setAccept(Collections.singletonList(MediaType.APPLICATION_XML));
+		headers.set("X-Naver-Client-Id",NaverSecret.NAVER_CLIENT_ID);
+		headers.set("X-Naver-Client-Secret",NaverSecret.NAVER_CLIENT_SECRET);
+
+		headers
+		.setAccept(Collections.singletonList(MediaType.APPLICATION_XML ));
+		
 		HttpEntity<String> entity = new HttpEntity<String>("parameter",headers);
-		
-		
 		ResponseEntity<Book_XML_Parent> bookList = null;
 		
-		bookList = restTemp.exchange(restURI,HttpMethod.GET,entity, Book_XML_Parent.class);
+		bookList
+			= restTemp.exchange(restURI, 
+					HttpMethod.GET,
+					entity,
+					Book_XML_Parent.class);
 		log.debug(bookList.toString());
 		return bookList.getBody().channel.item;
-	}
 	
+	}
+
 }
