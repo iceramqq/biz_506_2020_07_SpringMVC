@@ -22,10 +22,54 @@
 	}
 	
 </style>        
-<form:form id="read-book-write" modelAttribute="readBookVO">
-	<form:input path="r_date" placeholder="읽은 날짜"/>
+<form:form id="read-book-write" action="${rootPath}/read/write" modelAttribute="readBookVO">
+	<form:input path="r_book_seq" type="hidden" value="${BOOKVO.seq}"/>
+	<form:input path="r_date" type="date" placeholder="읽은 날짜"/>
 	<form:input path="r_stime" placeholder="읽기 시작 시각"/>
-	<form:input path="r_etime" placeholder="읽기 마침시각"/>
+	<form:input path="r_etime" placeholder="읽기 마침 시각"/>
 	<form:input path="r_comment" placeholder="읽은 소감"/>
 	<button>저장</button>
 </form:form>
+<style>
+table#book {
+	width: 95%;
+	border: 1px solid #ddd;
+	border-collapse: collapse;
+}
+
+table#book tr {
+	border-bottom: 1px solid #aaa;
+}
+
+table#book td,
+table#book th {
+	padding: 10px;
+	text-align: left;
+}
+
+table#book tr:ntn-child(odd) {
+	background-color: #ddd;
+}
+
+table#book tr:ntn-child(even) {
+	background-color: #fff:
+}
+</style>
+<table>
+  <tr>
+    <th>읽은날짜</th>
+    <th>시작</th>
+    <th>종료</th>
+    <th>소감</th>
+  </tr>
+  <c:forEach items="${READ_BOOK}" var="vo">
+	  <tr>
+	    <td>${vo.r_date}</td>
+	    <td>${vo.r_stime}</td>
+	    <td>${vo.r_etime}</td>
+	    <td>${vo.r_comment}</td>
+	  </tr>
+  </c:forEach>
+  
+</table>
+

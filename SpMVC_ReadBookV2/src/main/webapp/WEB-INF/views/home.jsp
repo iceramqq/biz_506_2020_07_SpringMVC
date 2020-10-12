@@ -84,7 +84,7 @@
     </c:choose>
     </section>
     <footer>
-      <address>CopyRight &copy; callor@callor.com</address>
+      <address>CopyRight &copy; iceram22@naver.com</address>
     </footer>
   </body>
 </html>
