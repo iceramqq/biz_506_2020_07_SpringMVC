@@ -31,31 +31,28 @@
 	<button>저장</button>
 </form:form>
 <style>
-table#book {
+table#rbook {
 	width: 95%;
+	margin:5px auto;
 	border: 1px solid #ddd;
-	border-collapse: collapse;
 }
-
-table#book tr {
+table#rbook tr {
 	border-bottom: 1px solid #aaa;
 }
-
-table#book td,
-table#book th {
-	padding: 10px;
+table#rbook td, table#rbook th {
+	padding:10px;
 	text-align: left;
 }
 
-table#book tr:ntn-child(odd) {
+table#rbook tr:nth-child(odd) {
 	background-color: #ddd;
 }
-
-table#book tr:ntn-child(even) {
-	background-color: #fff:
+table#rbook tr:nth-child(even) {
+	background-color: #fff;
 }
+
 </style>
-<table>
+<table id="rbook">
   <tr>
     <th>읽은날짜</th>
     <th>시작</th>
