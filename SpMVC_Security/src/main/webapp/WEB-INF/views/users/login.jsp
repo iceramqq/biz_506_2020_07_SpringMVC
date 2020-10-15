@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
-
 <style>
-body {
-	background-color: #34496e;
-}
-
 #login_body {
 	margin: 0;
 	padding: 0;
@@ -86,14 +81,21 @@ body {
       CSS3 에니메이션을 JS 사용하지 않고 구현할수 있도록 만들어진 Query
       */
 @keyframes login_box_top_down {
-	from { 
-		top:-300px;
-		opacity: 0;
-	}
-	to {
-		top: 50%;
-		opacity: 1;
-	}
+from { top:-300px;
+	opacity: 0;
+}
+
+to {
+	top: 50%;
+	opacity: 1;
+}
+
+h4#login-fail {
+	margin:5px auto;
+	background-color: red;
+	color:yellow;
+	border-radius: 15px;
+	padding:8px;
 }
 
 </style>
@@ -106,10 +108,13 @@ body {
 			<c:remove var="SPRING_SECURITY_LAST_EXCEPTION" scope="session"/>
 		</c:if>
 		
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
-		<input name="username" placeholder="사용자 ID"> 
-		<input name="password" type="password" placeholder="비밀번호">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+		<input name="username" placeholder="사용자 ID" /> 
+		<input name="password" type="password" placeholder="비밀번호" />
 		<button>로그인</button>
 		<button type="button">회원가입</button>
 	</form>
 </section>
+
+</body>
+</html>
