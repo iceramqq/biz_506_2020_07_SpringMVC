@@ -3,7 +3,7 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <nav id="main-nav">
 	<ul id="main-menu">
-		<li><a href="home">HOME</a></li>
+		<li><a href="/">HOME</a></li>
 		<li><a>시대별 추천코스</a>
 			<ul id="sub-menu">
 				<li><a href="page1">삼국 시대</a></li>
