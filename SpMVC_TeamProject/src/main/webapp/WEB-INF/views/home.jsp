@@ -124,30 +124,7 @@ img {
 		<c:when test="${BODY == 'PAGE1' }">
 			<%@ include file="/WEB-INF/views/page1.jsp"%>
 		</c:when>
-		<c:when test="${BODY == 'PAGE2' }">
-			<%@ include file="/WEB-INF/views/page2.jsp"%>
-		</c:when>
-		<c:when test="${BODY == 'PAGE3' }">
-			<%@ include file="/WEB-INF/views/page3.jsp"%>
-		</c:when>
-		<c:when test="${BODY == 'PAGE4' }">
-			<%@ include file="/WEB-INF/views/page4.jsp"%>
-		</c:when>
-		<c:when test="${BODY == 'PAGE5' }">
-			<%@ include file="/WEB-INF/views/page5.jsp"%>
-		</c:when>
-		<c:when test="${BODY == 'PAGE6' }">
-			<%@ include file="/WEB-INF/views/page6.jsp"%>
-		</c:when>
-		<c:when test="${BODY == 'PAGE7' }">
-			<%@ include file="/WEB-INF/views/page7.jsp"%>
-		</c:when>
-		<c:when test="${BODY == 'PAGE8' }">
-			<%@ include file="/WEB-INF/views/page8.jsp"%>
-		</c:when>
-		<c:when test="${BODY == 'PAGE9' }">
-			<%@ include file="/WEB-INF/views/page9.jsp"%>
-		</c:when>
+		
 		<c:otherwise>
 			<%@ include file="/WEB-INF/views/main.jsp"%>
 		</c:otherwise>
