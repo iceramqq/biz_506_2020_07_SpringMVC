@@ -7,11 +7,31 @@
 				function() {
 					document.location.href = "${rootPath}/bbs/write"
 				})
-				
+		/*
+		tagh와 tag들이 서로 감싸는 관계로 layout이 만들어져 잇을때
+		tag들에 click event 핸들링 이 설정되어 있으면
+		어떤 특정 tag를 click 해ㅆ을 때 원하지 않는 event가 발생하는 경우가 있다.
+		이러한 현상을 이벤ㄴ트 버블링 이라고 한다.ㅣ
+		tag box의 가장 중간부분에 있는 
+		
+		이버블링을 역으로 효과적으로 이용할 수 잇는데
+		td를 감싸고 있는 table에 click event
+		
+		
+		이러한 기법을 이벤트 위임이라고 한다.
+		
+		
+		*/
 		document.querySelector("table").addEventListener("click", function (event) {
 		      let tag_name = event.target.tagName;
 		      if (tag_name === "TD") {
-		        let seq = event.target.dataset.seq;
+		        // 제목
+		    	// let seq = event.target.dataset.seq;
+		        
+		        // td tag가 클릭되엇으면 현재 클릭된 td tag와 가장 인접한
+		        // tr를 참조한다.
+		        // 클릭된 TD를 기준으로 TR tag에서 seq값 추출
+		        let seq = event.target.closest("TR").dataset.seq
 		        if(seq){
 		        	//alert(seq)
 		        	document.location.href = "${rootPath}/bbs/detail/" + seq
@@ -30,11 +50,11 @@
 	*/
 </script>
 <style>
-td.bbs-subject {
+tr.bbs_tr {
 	cursor: pointer;
 }
 
-td.bbs-subject:hover {
+tr.bbs_tr:hover {
 	background-color: #ccc;
 }
 </style>

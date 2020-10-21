@@ -44,9 +44,75 @@ section#bbs-detail-body div {
 	font-weight: bold;
 	font-size: 25px;
 }
+section#bbs-button-box {
+	width: 50%;
+	margin: 10px auto;
+	text-align: right;
+}
+section#bbs-button-box button {
+	margin: 5px;
+	padding: 10px 16px;
+	border: 0;
+	outline: 0;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+section#bbs-button-box button:hover {
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.6);
+}
+section#bbs-button-box button:nth-child(1) {
+	background-color: green;
+}
+section#bbs-button-box button:nth-child(2) {
+	background-color: blue;
+	color: white;
+}
+section#bbs-button-box button:nth-child(3) {
+	background-color: orange;
+}
 </style>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+	document.querySelector("section#bbs-button-box").addEventListener("click",function(e){
+		let url = "${rootPath}/bbs/${bbsVO.b_seq}/"
+		if(e.target.tagName === ("BUTTON")) {
+			
+			/*
+			게시글 삭제를 요청하면(삭제버튼 클릭)
+			ajax 사용하여 서버에 delete mathod으로 삭제를 요청하자
+			*/
+			if(e.target.className == "delete"){
+				if(confirm("정말 삭제할까요?")){
+					let data = {seq : "${bbsVO.b_seq}"}
+					fetch("${rootPath}/api/bbs",
+							{
+								method : "DELETE",
+								headers : {"Content-type":"application/json"},
+								// json 객체데이터를 문자열화 하여 http body 담기
+								body : JSON.stringify(data) 
+							}
+					)
+					.then(function(result){
+						alert("성공")
+					})
+					.catch(function(error){
+						alert("실패")
+					})
+					return false;
+				}
+			}
+			document.location.href = url + e.target.className
+		}
+	})
+})
+</script>
 <section id="bbs-detail-header">
-	<article><img src="${rootPath}/upload/${bbsVO.b_file}" width="250px"></article>
+	<article>
+		<a href="${rootPath}/upload/${bbsVO.b_file}"  target=_new>
+			<img src="${rootPath}/upload/${bbsVO.b_file}" width="250px">
+		</a>
+	</article>
 	<article>
 		<div class="title">제목</div>
 		<div class="content">${bbsVO.b_subject}</div>
@@ -59,4 +125,9 @@ section#bbs-detail-body div {
 <section id="bbs-detail-body">
 <div>내용</div>
 <p>${bbsVO.b_content}</p>
+</section>
+<section id="bbs-button-box">
+	<button class="list">리스트</button>
+	<button class="update">수정</button>
+	<button class="delete">삭제</button>
 </section>
