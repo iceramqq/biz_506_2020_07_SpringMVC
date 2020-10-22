@@ -1,47 +1,86 @@
 package com.biz.bbs.controller;
 
+import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.biz.bbs.model.BBsVO;
+import com.biz.bbs.service.BBsService;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+
+@CrossOrigin({"http://127.0.0.1:5500","https://naver.com","*"})
 @RestController
 @RequestMapping(value = "/api")
 public class BBsAPIController {
 
+	@Autowired
+	@Qualifier("bbsServiceV1")
+	private BBsService bbsService;
+	
+	// http://127.0.0.1:5500 에서 api 요청이 오면, cors policy 를 무시하고
+	// 응답하라
+	// @CrossOrigin("http://127.0.0.1:5500")
+	
+	// localhost:8080/bbs/api/bbs 요청을 하면 게시판 list를 보내달라(getter 하겠다) 
 	@RequestMapping(value = "/bbs",method = RequestMethod.GET)
-	public String bbs_list() {
-		return "bbs_list";
+	public List<BBsVO> bbs_list() {
+		
+		List<BBsVO> bbsList = bbsService.selectAll();
+		return bbsList;
 	}
-	
+	// localhost:8080/bbs/api/bbs/3 게시판데이터중에서 3번데이터 1개를 보내달라
 	@RequestMapping(value = "/bbs/{seq}",method = RequestMethod.GET)
-	public String bbs_item() {
-		return "bbs_item";
+	public BBsVO bbs_item(@PathVariable("seq") String seq) {
+		
+		long long_seq = Long.valueOf(seq);
+		BBsVO bbsVO = bbsService.findBySeq(long_seq);
+		return bbsVO;
 	}
-	
+	// form에 데이터를 입력하고 submit을 수행하면 데이터를 insert하라
+	// vo 클래스를 매개변수로 지정하고 데이터를 수신한다.
+	// @modelAttribute를 사용하여 form에서 submit한 데이텀를 vo에 담기
+	// 4.x 이상에서는 @modelAttribute  를 
 	@RequestMapping(value = "/bbs",method = RequestMethod.POST)
-	public String bbs_insert() {
+	public String bbs_insert(@ModelAttribute BBsVO bbsVO) {
+		
+		log.debug("POST RequestMethod Type으로 요청된 메소드");
+		log.debug("시퀀스 값 {}", bbsVO.toString());
 		return "bbs_insert";
 	}
-	
+	// form에 데이터를 입력하고 submit을 수행하면 데이터를 update하라
 	@RequestMapping(value = "/bbs",method = RequestMethod.PUT)
-	public String bbs_update(@RequestBody Map<String, String> data) {
+	public String bbs_update(@ModelAttribute BBsVO bbsVO,String seq) {
 		
 		log.debug("PUT RequestMethod Type으로 요청된 메소드");
-		log.debug("시퀀스 값 {}",data.get("seq"));
+		log.debug("수신한 데이터 {}",bbsVO.toString());
 		return "bbs_update";
 	}
+	// 특정한
+	// 삭제할 게시판의 id(seq)값 1개만 받으면 된다.
+	// id값 1개를 받기 위해서 vo를 사용하는 것은 왠지 낭비같다.
+	// 1개의 string형 변수만 받아도 되는데,
+	// front
 	
+	//
+	// 그래서 사용하는 방법 형식의 매개변수를 만들어주고
+	// 
 	@RequestMapping(value = "/bbs",method = RequestMethod.DELETE)
 	public String bbs_delete(@RequestBody Map<String, String> data) {
 		
 		log.debug("DELETE RequestMethod Type으로 요청된 메소드");
-		log.debug("시퀀스 값 {}",data.get("seq"));
+		log.debug("시퀀스 값 {}",data.get("seq").toString());
 		return "bbs_delete";
 	}
 }
