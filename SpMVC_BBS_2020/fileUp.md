@@ -27,3 +27,17 @@ insert 수행하기
 
 3. updete
 * seq 값으로 게시글을 가져와서 write.jsp에 보이고 변경할 데이터들 입력받기
+
+
+## 다중파일 업로드 CRUD 구현
+1. 디증파일을 업로드하고
+2. 파일의 원래이름과 업로드된 파일이름정보를 list로 생성
+3. bbs table에 데이터를 insert 하고
+4. bbs table로 부터 새로생성된 seq값을 가져오고
+5. file table에 파일 list를 insert하는데 이때 I_b_seq 칼럼에 bbs의 seq값을 같이
+첨부하여 insert 한다.
+
+
+
+
+

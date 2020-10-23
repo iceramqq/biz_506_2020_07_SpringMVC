@@ -32,14 +32,22 @@ public class FileServiceImplV4 extends FileServiceImplV1{
 	 * private final로 선언된 멤버변수는 
 	 * 반드시 클래스의 생성자 메서드에서 초기화 해야 한다.
 	 */
-	
-	private final String rootFolder;
+	/*
+	 * private 으로 선언된 rootFolder변수를
+	 * protected로 변경
+	 * protected로 선언된 변수들은 현재 클래스
+	 */
+	protected final String rootFolder;
 	public FileServiceImplV4() {
 		rootFolder = "C:/bizwork/workspace/upload";
 	}
 	
 	@Override
 	public String fileUp(MultipartFile file) {
+		
+		if(file == null) {
+			return null;
+		}
 		
 		File dir = new File(rootFolder);
 		

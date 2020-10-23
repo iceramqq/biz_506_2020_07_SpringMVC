@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.codec.multipart.MultipartHttpMessageReader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.biz.bbs.model.BBsVO;
 import com.biz.bbs.service.BBsService;
@@ -66,13 +68,24 @@ public class BbsController {
 	 * multipartfile 클래스를 매개변수로 설정하여 파일을 받기
 	 * 이 클래스에 @requestParam(이름) : 이름 = form에서 input type=file로 설정된
 	 * 		 tag의 name값
+	 * 
+	 * MultipartHttpMessageReader
+	 * 멀티파일(여러개의 파일)을 한꺼번에 업로드했을때
+	 * 파일들을 받ㅇ르 클래스(인터페이스)
+	 * 
+	 * 1. 단독파일들을 추출하고
+	 * 2. 각각의 파일들을 모두 업로드 수행하고
+	 * 3. 업로드된 파일 이름을 db에 저장하는 처리를 해야한다.
+	 * 
 	 */
 	@RequestMapping(value="/write",method=RequestMethod.POST)
-	public String write(BBsVO bbsVO, @RequestParam("file") MultipartFile file) {
+	public String write(BBsVO bbsVO, @RequestParam(name = "file",required = false) MultipartFile file,MultipartHttpServletRequest files) {
 		
 		log.debug("업로드한 파일 이름 : " + file.getOriginalFilename());
-		
-		bbsService.insert(bbsVO,file);
+		// bbsService.insert(bbsVO) : text 데이터만 insert
+		// bbsService.insert(bbsVO,file) : text데이터와 한개의 파이을 insert
+		// text 데이터와 멀티파일을 insert
+		List<String> fileName = bbsService.insert(bbsVO, files);
 		return "redirect:/bbs/list";
 	
 	}
