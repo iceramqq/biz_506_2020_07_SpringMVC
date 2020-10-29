@@ -14,9 +14,6 @@ public class EmsServiceImplV1 implements EmsService{
 	@Autowired
 	private EmsDao emsDao;
 	
-	@Autowired
-	private NaverMailSendService naverMail;
-	
 	@Override
 	public List<EmsVO> selectAll() {
 		
@@ -33,8 +30,6 @@ public class EmsServiceImplV1 implements EmsService{
 
 	@Override
 	public int insert(EmsVO emsVO) {
-		
-		naverMail.sendMail(emsVO);
 		
 		int ret = emsDao.insert(emsVO);		
 		return ret;

@@ -9,3 +9,41 @@
 * 만약 새로운 파일이 업로드 되면 
 기존의 파일을 삭제하고, 업로드를 수행
 * 만약 새로운 파일이 선택된지 않으면
+
+
+## naver smtp 설정값들
+
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smpt.auth">true</prop>
+				<prop key="mail.smpt.starttls.enable">true</prop>
+				<prop key="mail.smtp.ssl.enable">true</prop>
+				<prop key="mail.smtp.ssl.trust">smtp.naver.com</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+		
+### gmail smtp 설정값들
+
+	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="465" />
+		<property name="username" value="" />
+		<property name="password" value="" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smpt.auth">true</prop>
+				<prop key="mail.smpt.starttls.enable">true</prop>
+				<prop key="mail.smtp.ssl.enable">true</prop>
+				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+
+	</bean>
+
+
+
+
