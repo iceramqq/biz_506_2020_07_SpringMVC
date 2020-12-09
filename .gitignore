@@ -14,7 +14,6 @@ hs_err_pid*
 .metadata
 bin/
 tmp/
-Servers/
 *.tmp
 *.bak
 *.swp
@@ -141,5 +140,8 @@ typings/
 .metadata/
 RemoteSystemsTempFiles/
 
-# naver api key
+# naver API Key
 NaverSecret.*
+
+# DataGo SERVICE Key
+DataGoConfig.*
