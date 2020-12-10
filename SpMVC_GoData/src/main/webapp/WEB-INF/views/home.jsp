@@ -9,23 +9,28 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="${rootPath}/static/css/main.css?ver=20202-12-09" />
+	href="${rootPath}/static/css/main.css?ver=20202-12-10" />
 <script>
-	document.addEventListener("DOMContentLoaded",function() {
-		const menu_station = document.querySelector("nav.main-nav .get-station")
-		menu_station.onclick = function() {
-			document.location.href = "${rootPath}/bis/station"
-		}
-		const select_cat = document.querySelector("select[name='cat']")
-		select_cat.onchange = function(e) {
-			const value = e.target.value
-			if (value === 'hosp') {
-				document.querySelector("input[name='search']").placeholder = '병원명 입력 후 enter...'
-			} else {
-				document.querySelector("input[name='search']").placeholder = '주소 입력 후 enter...'
-			}
-		}
-	})
+	document
+			.addEventListener(
+					"DOMContentLoaded",
+					function() {
+						const menu_station = document
+								.querySelector("nav.main-nav .get-station")
+						menu_station.onclick = function() {
+							document.location.href = "${rootPath}/bis/station"
+						}
+						const select_cat = document
+								.querySelector("select[name='cat']")
+						select_cat.onchange = function(e) {
+							const value = e.target.value
+							if (value === 'hosp') {
+								document.querySelector("input[name='search']").placeholder = '병원명 입력 후 enter...'
+							} else {
+								document.querySelector("input[name='search']").placeholder = '주소 입력 후 enter...'
+							}
+						}
+					})
 </script>
 
 </head>
@@ -37,7 +42,7 @@
 		<ul>
 			<li>Home</li>
 			<li>
-				<form>
+				<form action="${rootPath}/pet/getHosp">
 					<select name="cat">
 						<option value="hosp">병원명</option>
 						<option value="addr">주소</option>
@@ -54,14 +59,18 @@
 			<li class="get-station">노선정보가져오기</li>
 		</ul>
 	</nav>
-	<section>
-		<c:if test="${BODY == 'PET' }">
-			<%@ include file="/WEB-INF/views/pet_view.jsp"%>
-		</c:if>
+
+	<link rel="stylesheet"
+		href="${rootPath}/static/css/station.css?ver=2020-12-10-6" />
+	<section class="main-body">
 		<c:if test="${BODY == 'STATION' }">
 			<%@ include file="/WEB-INF/views/station_view.jsp"%>
+			<%@ include file="/WEB-INF/views/busstop_view.jsp"%>
 		</c:if>
 	</section>
+	<c:if test="${BODY == 'PET' }">
+		<%@ include file="/WEB-INF/views/pet_view.jsp"%>
+	</c:if>
 
 </body>
 </html>
